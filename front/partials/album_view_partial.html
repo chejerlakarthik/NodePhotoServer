@@ -1,0 +1,13 @@
+<h2 style="text-align: center;">{{ album_name | uppercase }}</h2>
+
+<div class="alert alert-danger" data-ng-show="load_error_message">{{ load_error_message }}</div>
+
+<div class="photo thumbnail" data-ng-repeat="photo in photos">
+	
+	<a href="#/album/{{ album_name }}/{{ photo.filename }}" >
+		<img data-ng-src="img/thumb/{{ album_name }}/{{ photo.filename }}" alt="Full image" />
+	</a>
+	<div class="caption-custom caption">
+		<p>{{ photo.description }}</p>
+	</div>
+</div>

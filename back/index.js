@@ -58,11 +58,13 @@ app.put("/v1/albums.json", function (req, res) {
             title: req.body.title,
             date: req.body.date,
             description: req.body.description,
-            photos: []
+            imgUrl: req.body.imgUrl,
+            photos: req.body.photos
         };
 
         mkdirs_for_album(req.body.name, function (err, results) {
             if (err) return send_mkdir_error(res, err, req.body.name);
+            console.log(al);
             photo_album_tree.push(JSON.parse(JSON.stringify(al)));
             fs.writeFileSync(_filename, JSON.stringify(photo_album_tree, null, 2));
             return send_success_resp(res, al);
@@ -135,7 +137,7 @@ app.put("/v1/albums/:album_name/photos.json", function (req, res) {
                                    "Duplicate filename for album.");
         }
 
-        // before i modify the array, copy the file to the media 
+        // before i modify the array, copy the file to the img 
         // location.
         var upfn = req.files.file.path;
         copy_file_to_destinations(upfn, rpan, req.body.filename, function (err) {
@@ -264,7 +266,6 @@ function album_by_name (name) {
         if (pati.name.toLowerCase() == name.toLowerCase())
             return pati;
     }
-
     return null;
 }
 
@@ -317,9 +318,9 @@ function send_mkdir_error(res, err, aname) {
 function mkdirs_for_album (album_name, callback) {
 
     var dirs = [
-        __dirname + "/../front/media/" + album_name,
-        __dirname + "/../front/media/" + album_name + "/thumb",
-        __dirname + "/../front/media/" + album_name + "/full"
+        __dirname + "/../front/img/" + album_name,
+        __dirname + "/../front/img/" + album_name + "/thumb",
+        __dirname + "/../front/img/" + album_name + "/full"
     ];
 
     async.eachSeries(
@@ -352,8 +353,8 @@ function mkdirs_for_album (album_name, callback) {
  * UNDONE: make thumbnails!!!
  */
 function copy_file_to_destinations (uploadfn, album_name, destfn, callback) {
-    var np1 = __dirname + "/../front/media/" + album_name + "/thumb/" + destfn;
-    var np2 = __dirname + "/../front/media/" + album_name + "/full/" + destfn;
+    var np1 = __dirname + "/../front/img/" + album_name + "/thumb/" + destfn;
+    var np2 = __dirname + "/../front/img/" + album_name + "/full/" + destfn;
 
     copy_file(uploadfn, np1, function (err, results) {
         if (err) {

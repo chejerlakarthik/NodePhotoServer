@@ -1,32 +1,29 @@
-<html ng-app="photoSharingApp">
+<!DOCTYPE html>
+<html>
 <head>
-  <link rel="stylesheet" href="/css/app.css">
-  <link rel="stylesheet" href="/css/bootstrap.css">
-  <script type='text/javascript' src="/js/angular.min.js"></script>
-  <script type='text/javascript' src="/js/angular-route.js"></script>
-  <script type='text/javascript' src="/js/angular-file-upload.js"></script>
-  <script type='text/javascript' src="/js/jquery.min.js"></script>
-  <script type='text/javascript' src="/js/bootstrap.min.js"></script>
+	<meta charset="ISO-8859-1">
+	<title>Angular Albums</title>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script type="text/javascript" src="js/angular-route.min.js"></script>
+	
+	<!-- My Angular modules & controller -->
+	<script type="text/javascript" src="js/controllers/app.js"></script>
+	<script type="text/javascript" src="js/controllers/albumsListController.js"></script>
+	<script type="text/javascript" src="js/controllers/my404Controller.js"></script>
+	<script type="text/javascript" src="js/controllers/userController.js"></script>
+	<script type="text/javascript" src="js/controllers/albumViewController.js"></script>
+	<script type="text/javascript" src="js/controllers/photoViewController.js"></script>
+	<script type="text/javascript" src="js/services/albumProvider.js"></script>
+	
+	<link rel="stylesheet" href="css/bootstrap.css"/>
+	<link rel="stylesheet" href="css/app.css"/>
 </head>
+<body data-ng-app="albumApp" class="html-body">
+			
+	<div data-ng-include="'partials/navigation_bar_partial.html'"></div>
 
-<body ng-controller="AlbumListController">
-
-  <div id="content">
-    <ng-view></ng-view>
-  </div>
-
-  <script type="text/javascript" src="/app/app.js"></script>
-  <script type="text/javascript" src="/app/controllers/albumlistcontroller.js"></script>
-  <script type="text/javascript" src="/app/controllers/albumviewercontroller.js"></script>
-  <script type="text/javascript" src="/app/controllers/photoviewercontroller.js"></script>
-  <script type="text/javascript" src="/app/controllers/albumuploadcontroller.js"></script>
-
-
-  <script type="text/javascript" src="/app/services/configprops.js"></script>
-  <script type="text/javascript" src="/app/services/albumprovider.js"></script>
-
+	<data-ng-view></data-ng-view>
+	
 </body>
 </html>
-
-
-
