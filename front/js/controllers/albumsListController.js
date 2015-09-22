@@ -17,7 +17,7 @@ function AlbumsListController($scope,$location,albumProvider) {
 			/*for (var i = 0; i < 1000000000; i++) {
 			}*/
 			$scope.pageLoadCompleted = true;
-			$scope.albums = albums;ss
+			$scope.albums = albums;
 		}
 	});
 
