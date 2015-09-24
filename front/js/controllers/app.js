@@ -1,4 +1,4 @@
-var album = angular.module('albumApp',['ngRoute']);
+var album = angular.module('albumApp',['ngRoute','ui.bootstrap']);
 album.config(function ($routeProvider){
 	$routeProvider
 	.when("/albums", {controller: AlbumsListController, templateUrl: "partials/album_list_partial.html"})
