@@ -25,22 +25,29 @@ function albumProvider($http) {
 		});
 	};
 
-	this.addAlbums = function(newAlbum, callback) {
+	this.addAlbum = function(newAlbum, callback) {
 
 		if (!newAlbum.title) {
 			return callback({
-				code : "Title isnt entered!!"
+				code : "missing_title"
 			});
-		} else if (!newAlbum.date || !is_valid_date(newAlbum.date)) {
+		} else if (!newAlbum.date){
 			return callback({
-				code : "Something is wrong with the date!!"
+				code : "missing_date"
+			});
+		} else if(!is_valid_date(newAlbum.date)){
+			return callback({
+				code : "bad_date"
 			});
 		} else if (!newAlbum.name) {
 			return callback({
-				code : "Did you enter the album short name?"
+				code : "missing_name"
+			});
+		}else if (!newAlbum.description) {
+			return callback({
+				code : "missing_description"
 			});
 		} else {
-
 			$http.put("/v1/albums.json", newAlbum).success(
 					function(data, status, headers, conf) {
 						callback(null, data);

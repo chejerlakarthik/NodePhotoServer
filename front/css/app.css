@@ -2,8 +2,7 @@
 	background-color: lemonchiffon;
 }
 
-.img-loading
-{
+.img-loading{
     position:absolute;
     width:592px; /*image width */
     height:512px; /*image height */
@@ -24,8 +23,10 @@
 }
 
 .label-custom {
-	font-size: x-large;
+	font-size: large;
 	font-family: sans-serif;
+	margin: auto;
+	width: 60%;
 }
 
 .navbar-menu-link {
@@ -106,6 +107,23 @@ textarea {
 	margin-bottom: 1em;
 	margin-left: 1em;
 	margin-right: 1em;
+}
+
+.container>h2{
+	text-align: center;
+}
+
+.error-404>img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border: 1px solid blue;
+}
+
+.btn-reset {
+  color: white;
+  background-color: gray;
+  border-color: black;
 }
 
 .footer {

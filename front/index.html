@@ -3,11 +3,13 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Angular Albums</title>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/angular.js"></script>
-	<script type="text/javascript" src="js/angular-route.min.js"></script>
-	<script type="text/javascript" src="js/ui-bootstrap-tpls-0.10.0.min.js"></script>
-	<script type="text/javascript" src="js/jquery.js"></script>
+	
+	<!-- Framework libraries for jQuery, Angular, Bootstrap, UI-Bootstrap  -->
+	<script type="text/javascript" src="js/lib/jquery.js"></script>
+	<script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/lib/angular.js"></script>
+	<script type="text/javascript" src="js/lib/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/lib/ui-bootstrap-tpls-0.10.0.min.js"></script>
 	
 	<!-- My Angular modules & controller -->
 	<script type="text/javascript" src="js/controllers/app.js"></script>
@@ -16,9 +18,17 @@
 	<script type="text/javascript" src="js/controllers/userController.js"></script>
 	<script type="text/javascript" src="js/controllers/albumViewController.js"></script>
 	<script type="text/javascript" src="js/controllers/photoViewController.js"></script>
+	
+	<!-- Angular services -->
 	<script type="text/javascript" src="js/services/albumProvider.js"></script>
+	
+	<!-- Angular directives -->
 	<script type="text/javascript" src="js/directives/customDirectives.js"></script>
 	
+	<!-- Angular filters -->
+	<script type="text/javascript" src="js/filters/custom-filters.js"></script>
+	
+	<!-- Style Sheets -->
 	<link rel="stylesheet" href="css/bootstrap.css"/>
 	<link rel="stylesheet" href="css/app.css"/>
 </head>
@@ -26,8 +36,8 @@
 			
 	<div data-ng-include="'partials/navigation_bar_partial.html'"></div>
 
-	<data-ng-view></data-ng-view>
-	
-	<div photo-album-footer></div>
+	<div class="view-animate-container">
+  		<ng-view class="view-animate"></ng-view>
+	</div>
 </body>
 </html>

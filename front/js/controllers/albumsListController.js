@@ -21,7 +21,7 @@ function AlbumsListController($scope,$location,albumProvider,$modal) {
 
 	$scope.openAddAlbumDialog = function () {
         var addAlbumDialog = $modal.open({
-            size: "sm",
+            size: "lg",
             templateUrl: 'myModalContent.html',
             controller: AddAlbumDialogController,
             resolve: {
@@ -62,7 +62,32 @@ album.controller('AlbumsListController', AlbumsListController);
 function AddAlbumDialogController ($scope, $location, $modalInstance, albumProvider) {
     $scope.add_album_error = "";
     $scope.adding_album = {};
+    
+    //Date picking control
+    $scope.adding_album = {};
+    $scope.adding_album.date = new Date();
+    $scope.dt = new Date();
+    $scope.opened = false;
+    
+    $scope.today = new Date();
 
+    $scope.dateOptions = {
+      'year-format': "'yy'",
+      startingDay: 1,
+      'show-weeks': true,
+      	initDate: $scope.adding_album.date,
+      	minDate: '2015-01-01'
+    };
+      
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+    
+    $scope.open = function($event) {
+  	    $scope.opened = true;
+  	    $scope.adding_album.date = new Date();
+    };
+    
+    //To add a new album
     $scope.addAlbum = function (new_album) {
         albumProvider.addAlbum(new_album, function (err, album) {
             if (err) {
@@ -89,7 +114,10 @@ function AddAlbumDialogController ($scope, $location, $modalInstance, albumProvi
     $scope.ok = function () {
         $scope.addAlbum($scope.adding_album);
     };
-
+    
+    $scope.reset = function(){
+    	$scope.adding_album = {};
+    }
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
     };
